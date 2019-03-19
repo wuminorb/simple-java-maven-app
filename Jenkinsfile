@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'ls ~/.m2'
+                sh 'ls /root/.m2'
                 sh 'mvn -B -DskipTests clean package'
             }
         }
