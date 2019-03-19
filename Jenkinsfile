@@ -10,6 +10,8 @@ pipeline {
             steps {
                 sh 'env'
                 sh 'pwd'
+                sh 'id -u'
+                sh 'id -u -n'
                 sh 'ls -al /root/.m2'
                 sh 'mvn -B -DskipTests clean package'
             }
