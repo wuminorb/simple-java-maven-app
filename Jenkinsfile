@@ -11,7 +11,7 @@ pipeline {
                 sh 'env'
                 sh 'pwd'
                 sh 'id -u'
-                sh 'mvn -Duser.home=/var/maven -DskipTests clean package'
+                sh 'mvn -B -Duser.home=/var/maven -DskipTests clean package'
             }
         }
     }
