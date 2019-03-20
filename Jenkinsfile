@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
+            args '-v /disk2/jenkins/.m2:/var/maven/.m2 -u 1000 -e MAVEN_CONFIG=/var/maven/.m2'
         }
     }
     stages {
@@ -11,9 +11,7 @@ pipeline {
                 sh 'env'
                 sh 'pwd'
                 sh 'id -u'
-                sh 'id -u -n'
-                sh 'ls -al /root/.m2'
-                sh 'mvn -B -DskipTests clean package'
+                sh 'mvn -Duser.home=/var/maven -DskipTests clean package'
             }
         }
     }
